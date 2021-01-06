@@ -1,0 +1,20 @@
+.center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+.toDoGrid {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_area {
+    display: flex;
+}
+
+.main {
+    height: 100vh;   
+}
+
