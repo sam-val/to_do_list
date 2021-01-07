@@ -11,6 +11,7 @@ class Task {
         if (typeof name === 'string') {
             this.taskName = name
             this.id = uuid()
+            this.isDone = false
         }
     }
 
@@ -51,12 +52,19 @@ class ToDo {
 
         // add to GUI:
         this.tasks_div.appendChild(this.make_div(task))
-
+        text_field.value = ""
 
     }
 
+    changeStatusTask(task, status){
+        task.isDone = status;
+        let pos = this.data.indexOf(task)
+        this.data[pos].isDone = status;
+        this.updateLocalData()
+    }
+
     updateLocalData() {
-        localStorage.setItem('data', JSON.stringify(this.data))
+        localStorage.setItem(LOCAL_DATA_NAME, JSON.stringify(this.data))
     }
 
     load_and_display() {
@@ -76,8 +84,21 @@ class ToDo {
         task_div.id = task.id
 
         let span_div = document.createElement("SPAN")
+
+        span_div.addEventListener('click', (e) => {
+            if (e.target.tagName === "SPAN") {
+                let done = e.target.classList.toggle("clicked")
+                this.changeStatusTask(task, done) 
+            }
+        });
+
+        if (task.isDone) {
+            span_div.classList.add("clicked")
+        }
+
         let del_button_div = document.createElement("BUTTON") 
         del_button_div.textContent = "Remove"
+        del_button_div.classList.add("button")
 
         span_div.innerText = task.taskName
         del_button_div.addEventListener("click", (e) => {
@@ -94,7 +115,8 @@ const add_button = document.querySelector("#add_button")
 const text_field = document.querySelector("#input_field")
 const tasks_div = document.querySelector("#tasks")
 
-var data = JSON.parse(localStorage.getItem('data'))
+const LOCAL_DATA_NAME = "todoList_js_data"
+var data = JSON.parse(localStorage.getItem(LOCAL_DATA_NAME))
 console.log("my data", data)
 
 var toDo = new ToDo(data,tasks_div);
