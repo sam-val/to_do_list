@@ -122,10 +122,23 @@ console.log("my data", data)
 var toDo = new ToDo(data,tasks_div);
 
 add_button.addEventListener("click", (e) => {
+    add_event()
+})
+
+// bind add butto to "enter" event
+document.onkeydown = function(e) {
+    if(e.which === 13) {
+       add_event() 
+    }
+}
+
+function add_event() {
     if (text_field.value !== "") {
         let task = new Task(text_field.value)
         toDo.add(task)
 
+    }else {
+        alert("Text field is empty!. Please enter something before adding.")
     }
-})
+}
 
