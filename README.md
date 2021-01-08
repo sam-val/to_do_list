@@ -1,6 +1,6 @@
 ## To-do-list in JS
 
-The usual stuff. Something every coder does to practice programming.
+The usual stuff. An app practically every coder does to practice programming.
 
 ## Gif:
 
