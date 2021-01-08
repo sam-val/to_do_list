@@ -104,11 +104,10 @@
 #tasks > div > span {
     border-width: 0px;
     font-size: 20px;
-    padding: 0px;
+    margin: 0px 0px 0px 20px;
     position: relative;
     height: auto;
     width: 300px;
-    left: 50px;
     word-wrap: break-word;
     word-break: keep-all;
 }
