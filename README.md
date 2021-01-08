@@ -1,4 +1,4 @@
-## To do list in JS
+## To-do-list in JS
 
 The usual stuff. Something every coder does to practice programming.
 
